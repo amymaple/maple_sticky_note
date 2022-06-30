@@ -1,1 +1,1 @@
-** hello there this is a title
+* Sticky notes application for partners to organize themselves
