@@ -16,6 +16,33 @@
 
                     {{ __('You are logged in!') }}
                 </div>
+
+
+
+
+
+                @foreach ($sticky_notes as $sticky_note)
+                    
+                    
+                    <h1>sticky note </h1>
+
+                    
+
+
+
+                
+                @endforeach
+
+
+
+                
+
+
+
+
+
+
+
             </div>
         </div>
     </div>
