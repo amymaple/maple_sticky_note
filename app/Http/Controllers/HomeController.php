@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\sticky_note;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+
+        $sticky_notes = sticky_note::all();
+        dd($sticky_notes);
+
+        return view('home')
+            ->with($sticky_notes ) ; 
+
+
+
     }
 }
