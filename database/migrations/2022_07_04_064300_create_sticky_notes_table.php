@@ -14,11 +14,17 @@ class CreateStickyNotesTable extends Migration
     public function up()
     {
         Schema::create('sticky_notes', function (Blueprint $table) {
+            
+
             $table->id();
             $table->timestamps();
             $table->string('title');
             $table->string('description');
-            $table->foreign('user_id')->references('id')->on('users');
+
+
+
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users'); 
         });
     }
 
