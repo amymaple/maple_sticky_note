@@ -3,9 +3,8 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __(' owowoow') }}</div>
+        <div class="col-md-8"> 
+                
 
                 <div class="card-body">
                     @if (session('status'))
@@ -14,16 +13,26 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
                 </div>
 
  
-                @foreach ($sticky_notes as $sticky_note)
-                    <h1>sticky note </h1>
+                
+
+                @foreach ($sticky_notes as $sticky_note) 
+                    <div class="card border-primary mb-3" style="max-width: 18rem;">
+                        <div class="card-header">{{$sticky_note->title}} </div>
+                        <div class="card-body text-primary">
+                            <h5 class="card-title">Primary card title</h5>
+                            <p class="card-text">{{$sticky_note->description}}</p>
+                        </div>
+                    </div>
                 @endforeach
 
 
-            </div>
+
+
+
+ 
         </div>
     </div>
 </div>

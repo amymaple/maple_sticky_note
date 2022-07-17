@@ -26,10 +26,12 @@ class HomeController extends Controller
     {
 
         $sticky_notes = sticky_note::all();
-        dd($sticky_notes);
+        //dd($sticky_notes);
 
+
+        //$sticky_notes = "owo" ; 
         return view('home')
-            ->with($sticky_notes ) ; 
+            ->with("sticky_notes", $sticky_notes ) ; 
 
 
 
