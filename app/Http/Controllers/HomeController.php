@@ -25,15 +25,9 @@ class HomeController extends Controller
     public function index()
     {
 
-        $sticky_notes = sticky_note::all();
-        //dd($sticky_notes);
-
-
-        //$sticky_notes = "owo" ; 
+        $sticky_notes = sticky_note::all();     
+        
         return view('home')
             ->with("sticky_notes", $sticky_notes ) ; 
-
-
-
     }
 }
