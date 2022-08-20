@@ -22,3 +22,4 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
+Route::post('/storeStickyNote', [App\Http\Controllers\StickyNoteController::class, 'store'] )->name("sticky_note_store");

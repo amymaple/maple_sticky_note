@@ -100,3 +100,63 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+
+
+
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+<script> 
+$(document).ready(function() { 
+
+    $('#add_sitcky_note').on('click', function () { 
+
+        Swal.fire({ 
+            title: 'Create a new sticky note',
+            html: `<input type="text" id="title" class="swal2-input" placeholder="Title">
+            <input type="text" id="description" class="swal2-input" placeholder="Description">`,
+            confirmButtonText: 'Create!',
+            focusConfirm: false,
+            showCancelButton: true, 
+        preConfirm: (login) => {
+            //To pre confirm in the view 
+        },
+        }).then((result) => {
+            var title = $("#title").val();
+            var description = $("#description").val();
+            
+
+            $.ajax({
+                type: "POST",
+                url: "storeStickyNote",
+                data: { 
+                    'title': title,
+                    'description': description
+                },
+                headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                success: function(response) {
+                    swal(
+                    "Sccess!",
+                    "Your note has been saved!",
+                    "success"
+                    )
+                },
+                failure: function (response) {
+                    swal(
+                    "Internal Error",
+                    "Oops, your note was not saved.", // had a missing comma
+                    "error"
+                    )
+                }
+            });
+
+
+        })
+
+    });
+
+}); 
+</script>

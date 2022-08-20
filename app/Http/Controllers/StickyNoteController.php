@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\sticky_note;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class StickyNoteController extends Controller
 {
@@ -34,8 +35,15 @@ class StickyNoteController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
+    { 
+        $user_id = Auth::user()->id; 
+        $newStickyNote= sticky_note::create([
+            'title' => $request->input("title"),
+            'description' => $request->input("description"), 
+            'user_id' => $user_id, 
+        ]); 
+
+        $newStickyNote->save(); 
     }
 
     /**
