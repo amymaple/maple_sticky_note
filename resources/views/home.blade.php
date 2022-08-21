@@ -26,8 +26,11 @@
                 @endif
                     <div class="col" style="margin:6px"  >
                         <div class="card border-primary mb-3" style="max-width: 18rem; height: 100%; margin:2px; border-radius: 6px">
-                            <div class="card-header">{{$sticky_note->title}} </div>
+                            <div class="card-header">{{$sticky_note->title}} 
+                                <i   class="delete_sticky_note fa fa-trash "style="margin-left:50%; margin-right:50%; " ></i>
+                            </div>
                             <div class="card-body text-primary">
+                                <h1 id="id_sticky_note" hidden >{{$sticky_note->id}}</h1>
                                 <h5 class="card-title">Primary card title</h5>
                                 <p class="card-text">{{$sticky_note->description}}</p>
                             </div>
@@ -37,7 +40,7 @@
             @endforeach
             <!--********************************************-->
             <div class="row"  >
-                <div class="col" style="margin:6px"  >
+                <div class="col " style="margin:6px"  >
                     <div class="card   border-primary   mb-3"  style="max-width: 18rem;border-style: dashed;border-width: 2px;height: 100%; margin:2px; border-radius: 6px; border-color :azure">
                         <div class="card-header">Add a new sticky note</div>
                         <div id="add_sitcky_note"class="card-body text-primary"> 
@@ -129,9 +132,6 @@
             </div> 
         </div>
 </div> --}}
-
-
-
  
 @endsection
 

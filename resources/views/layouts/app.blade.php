@@ -21,6 +21,15 @@
 
     <link  href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css"  rel="stylesheet"  type='text/css'>
   
+    <style type="text/css">
+        .square:before{
+            content: "";
+            display: block;
+            padding-top: 100%;  /* initial ratio of 1:1*/
+        }
+    </style>
+
+
 
 
 </head>
@@ -152,11 +161,34 @@ $(document).ready(function() {
                     )
                 }
             });
-
-
         })
-
     });
+
+
+
+    $('.delete_sticky_note').on('click', function () {
+        
+
+        Swal.fire({
+            title: 'Do you wish to delete this card?',
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: 'yes',
+            denyButtonText: 'cancel',
+        }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+
+
+                //var title = $("#id_sticky_note ").val();
+                
+                
+                Swal.fire('Card Deleted!', '', 'success');
+            }
+        })
+    });
+    
+
 
 }); 
 </script>
