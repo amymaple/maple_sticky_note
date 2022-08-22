@@ -86,8 +86,19 @@ class StickyNoteController extends Controller
      * @param  \App\Models\sticky_note  $sticky_note
      * @return \Illuminate\Http\Response
      */
-    public function destroy(sticky_note $sticky_note)
+    public function destroy($id)
     {
-        //
+        
+
+
+
+        sticky_note::find($id)->delete($id);
+        
+
+        return response()->json([
+            'success' => 'Record deleted successfully!'
+        ]);
+
+
     }
 }

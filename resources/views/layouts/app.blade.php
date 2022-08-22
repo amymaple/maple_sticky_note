@@ -27,6 +27,13 @@
             display: block;
             padding-top: 100%;  /* initial ratio of 1:1*/
         }
+
+        #owo{
+            box-shadow: 2px 12px 15px #999;
+            position: relative;
+            z-index: 10;
+        }
+ 
     </style>
 
 
@@ -35,7 +42,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm" id="owo">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
@@ -167,28 +174,37 @@ $(document).ready(function() {
 
 
     $('.delete_sticky_note').on('click', function () {
-        
+	 
+        var id_sticky_note = $(this).closest("#umu").find( ".id_sticky_note" ).val()  ;   
+ 
 
         Swal.fire({
             title: 'Do you wish to delete this card?',
-            showDenyButton: true,
-            showCancelButton: true,
-            confirmButtonText: 'yes',
-            denyButtonText: 'cancel',
+            confirmButtonText: 'yes', 
+            showCancelButton: true, 
         }).then((result) => {
             /* Read more about isConfirmed, isDenied below */
             if (result.isConfirmed) {
 
+                
+                
 
-                //var title = $("#id_sticky_note ").val();
+                $.ajax({
+                    type: "DELETE",
+                    url: 'deleteStickyNote/'+id_sticky_note , 
+                    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                    success: function(response) {
+                        Swal.fire('Card Deleted!', '', 'success');
+                    }, 
+                });
+
+
                 
                 
-                Swal.fire('Card Deleted!', '', 'success');
+
             }
         })
     });
     
-
-
 }); 
 </script>
