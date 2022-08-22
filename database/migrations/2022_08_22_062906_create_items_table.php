@@ -17,16 +17,10 @@ class CreateItemsTable extends Migration
         Schema::create('items', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            
             $table->string('text');
-
-
             $table->decimal('cost_exact', 10, 2)->nullable();
             $table->decimal('cost_approx_min', 10, 2)->nullable();
-            $table->decimal('cost_approx_max', 10, 2)->nullable();
-
-            
-            $table->string('text');
+            $table->decimal('cost_approx_max', 10, 2)->nullable();      
             $table->date('deadline')->nullable();
 
             $table->unsignedBigInteger('sticky_note_id'); 

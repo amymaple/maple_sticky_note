@@ -25,3 +25,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::post('/storeStickyNote', [App\Http\Controllers\StickyNoteController::class, 'store'] )->name("sticky_note_store");
 Route::delete('/deleteStickyNote/{id}', [App\Http\Controllers\StickyNoteController::class, 'destroy'])->name('sticky_note_delete');
 
+
+
+Route::get('/showStickyNote', [App\Http\Controllers\StickyNoteController::class, 'show'])->name('sticky_note_show');
+
+

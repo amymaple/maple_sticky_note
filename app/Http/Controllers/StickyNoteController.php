@@ -54,7 +54,10 @@ class StickyNoteController extends Controller
      */
     public function show(sticky_note $sticky_note)
     {
-        //
+        $sticky_note = sticky_note::find(1);  
+        
+        return view('sticky_note/show')
+            ->with("sticky_note", $sticky_note )  ; 
     }
 
     /**
@@ -88,17 +91,9 @@ class StickyNoteController extends Controller
      */
     public function destroy($id)
     {
-        
-
-
-
         sticky_note::find($id)->delete($id);
-        
-
         return response()->json([
             'success' => 'Record deleted successfully!'
         ]);
-
-
     }
 }

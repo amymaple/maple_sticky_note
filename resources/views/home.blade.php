@@ -12,7 +12,6 @@
                     </div>
                 @endif
             </div>
-
             <!--********************************************-->
             <?php $counter = 0; ?>
             <?php $closeBrackets= 0; ?>
@@ -32,33 +31,73 @@
                             <div class="card-body text-primary">
                                 <input hidden type="text" id="id_sticky_note"  value="{{$sticky_note->id}}" class="id_sticky_note"> 
                                 <h4 class="card-title">{{$sticky_note->description}}</h4>
-                                 
+                                
+
+
+                                <?php $counterItem = 0; ?>
                                 @foreach ($sticky_note->items as $item)
-                                    <p class="card-text">{{$item->text}}</p>
+                                 
+                                    <p class="card-text"  >
+                                        @if($counterItem < 2 )
+                                            {{$item->text}}
+                                        @else 
+                                            ...
+                                            @break 
+                                        @endif
+                                    </p>
+                                    <?php $counterItem++; ?>
+                                     
                                 @endforeach
+
+
+
+
                             </div>
                         </div>
                     </div>
                 <?php $counter++; ?>
             @endforeach
             <!--********************************************-->
-
-
             <div class="row"  >
                 <div class="col" style="margin:6px">
                     <div class="card   border-primary   mb-3"  style="max-width: 18rem;border-style: dashed;border-width: 2px;height: 100%; margin:2px; border-radius: 6px; border-color :azure">
-                        <div class="card-header">Add a new sticky note</div>
+                        <div class="card-header"   ><a href="{{ url('/showStickyNote') }}">Add a new sticky note</a> </div>
+
+
+
                         <div id="add_sitcky_note"class="card-body text-primary"> 
                             <i class="fa fa-plus-circle"style="margin-left:50%; margin-right:50%; " ></i>
                         </div>
                     </div>
                 </div> 
             </div>
-
-
-
+            <!--********************************************-->
         </div>
     </div>
 </div>
 
+
+
+
+{{-- <div class="row"  >
+    <div class="col" style="margin:6px">
+        <div class="card   border-primary   mb-3"  style="max-width: 18rem;border-style: dashed;border-width: 2px;height: 100%; margin:2px; border-radius: 6px; border-color :azure">
+            <!--*************************************-->
+            <div class="row">
+                <div class="col-sm-8">
+                    <p >item </p> 
+                </div>
+                <div class="col-sm-4">
+                    <p c >$10.5</p>
+                </div>
+            </div> 
+            <!--*************************************-->
+            <div id="add_sitcky_note"class="card-body text-primary"> 
+                <i class="fa fa-plus-circle"style="margin-left:50%; margin-right:50%; " ></i>
+            </div>
+        </div>
+    </div> 
+</div> --}}
+
+ 
 @endsection
