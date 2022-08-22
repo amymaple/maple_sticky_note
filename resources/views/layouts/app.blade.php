@@ -116,20 +116,11 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
-
-
-
-
-
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
 
 <script> 
 $(document).ready(function() { 
-
     $('#add_sitcky_note').on('click', function () { 
-
         Swal.fire({ 
             title: 'Create a new sticky note',
             html: `<input type="text" id="title" class="swal2-input" placeholder="Title">
@@ -143,8 +134,6 @@ $(document).ready(function() {
         }).then((result) => {
             var title = $("#title").val();
             var description = $("#description").val();
-            
-
             $.ajax({
                 type: "POST",
                 url: "storeStickyNote",
@@ -171,13 +160,8 @@ $(document).ready(function() {
         })
     });
 
-
-
     $('.delete_sticky_note').on('click', function () {
-	 
-        var id_sticky_note = $(this).closest("#umu").find( ".id_sticky_note" ).val()  ;   
- 
-
+        var id_sticky_note = $(this).closest("#one_sticky_note").find( ".id_sticky_note" ).val();
         Swal.fire({
             title: 'Do you wish to delete this card?',
             confirmButtonText: 'yes', 
@@ -185,10 +169,6 @@ $(document).ready(function() {
         }).then((result) => {
             /* Read more about isConfirmed, isDenied below */
             if (result.isConfirmed) {
-
-                
-                
-
                 $.ajax({
                     type: "DELETE",
                     url: 'deleteStickyNote/'+id_sticky_note , 
@@ -197,14 +177,25 @@ $(document).ready(function() {
                         Swal.fire('Card Deleted!', '', 'success');
                     }, 
                 });
-
-
-                
-                
-
             }
         })
     });
-    
+
+    $('#one_sticky_note').on('click', function () { 
+        // alert("owo") ; 
+        //TODO add a swal where you can see all of the data and inside of it 
+        //you can change the data from any item  
+
+
+
+        // Swal.fire({
+        //     title: 'owo',
+        //     imageUrl: 'https://i.imgur.com/SVyZjuS.jpeg' ,
+            
+            
+        // }) 
+    });
+
+
 }); 
 </script>

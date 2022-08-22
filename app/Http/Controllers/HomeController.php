@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\sticky_note;
+use App\Models\Item;
 
 class HomeController extends Controller
 {
@@ -24,9 +25,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-
-        $sticky_notes = sticky_note::all();     
-        
+        //Make it so it is only the ones that are from the user 
+        $sticky_notes = sticky_note::all();  
+ 
+           
         return view('home')
             ->with("sticky_notes", $sticky_notes ) ; 
     }

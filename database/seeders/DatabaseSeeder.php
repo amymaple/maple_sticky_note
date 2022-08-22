@@ -15,5 +15,6 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(UserSeeder::class);
         $this->call(Sticky_note_Seeder::class);
+        $this->call(ItemTableSeeder::class);
     }
 }
