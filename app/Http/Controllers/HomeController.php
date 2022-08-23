@@ -25,9 +25,9 @@ class HomeController extends Controller
      */
     public function index()
     {
+        //TODO
         //Make it so it is only the ones that are from the user 
         $sticky_notes = sticky_note::all();  
- 
            
         return view('home')
             ->with("sticky_notes", $sticky_notes ) ; 

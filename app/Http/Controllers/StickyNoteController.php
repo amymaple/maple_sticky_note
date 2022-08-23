@@ -52,10 +52,10 @@ class StickyNoteController extends Controller
      * @param  \App\Models\sticky_note  $sticky_note
      * @return \Illuminate\Http\Response
      */
-    public function show(sticky_note $sticky_note)
+    public function show(sticky_note $sticky_note, Request $request )
     {
-        $sticky_note = sticky_note::find(1);  
-        
+        $stickyNoteId = $request->input("stickyNoteId") ; 
+        $sticky_note = sticky_note::find($stickyNoteId);     
         return view('sticky_note/show')
             ->with("sticky_note", $sticky_note )  ; 
     }

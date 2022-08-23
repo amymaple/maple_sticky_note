@@ -3,24 +3,17 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <title>{{ config('app.name', 'Laravel') }}</title>
-
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
     <link  href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css"  rel="stylesheet"  type='text/css'>
-  
     <style type="text/css">
         .square:before{
             content: "";
@@ -29,24 +22,28 @@
         }
 
         #owo{
-            box-shadow: 2px 12px 15px #999;
+            box-shadow: 1px 1px 15px #999;
             position: relative;
             z-index: 10;
+                        
+            position: fixed;
+            top: 0;
+            width: 100%;
         }
- 
     </style>
-
-
-
-
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm" id="owo">
+        <nav class="navbar navbar-expand-md navbar-light bg-white " id="owo"
+         
+        >
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
-                </a>
+                </a>  
+                <a class="navbar-brand"  >
+                    About
+                </a> 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -97,7 +94,7 @@
         </nav>
 
 
-        <main class="py-4">
+        <main class="  px-5" style="margin-top:6%; " id="mainContent">
             @yield('content')
         </main>
     </div>
@@ -162,7 +159,7 @@ $(document).ready(function() {
     });
 
     $('.delete_sticky_note').on('click', function () {
-        var id_sticky_note = $(this).closest("#one_sticky_note").find( ".id_sticky_note" ).val();
+        var id_sticky_note = $(this).closest(".one_sticky_note").find( ".id_sticky_note" ).val();
         Swal.fire({
             title: 'Do you wish to delete this card?',
             confirmButtonText: 'yes', 
@@ -182,19 +179,18 @@ $(document).ready(function() {
         })
     });
 
-    $('#one_sticky_note').on('click', function () { 
-        // alert("owo") ; 
-        //TODO add a swal where you can see all of the data and inside of it 
-        //you can change the data from any item  
-
-
-
-        // Swal.fire({
-        //     title: 'owo',
-        //     imageUrl: 'https://i.imgur.com/SVyZjuS.jpeg' ,
-            
-            
-        // }) 
+    $('.one_sticky_note').on('click', function () {
+        var stickyNoteId = $(this).closest(".one_sticky_note").find( ".id_sticky_note" ).val(); 
+        $.ajax({
+            url: 'showStickyNote',
+            type: 'GET',
+            data: {
+                stickyNoteId: stickyNoteId, 
+            },
+            success: function (data) {
+                $('html').html(data); 
+            }
+        });
     });
 
 
